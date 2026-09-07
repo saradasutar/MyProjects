@@ -7,176 +7,256 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --ink:#211934;
-    --ink-soft:#342A4E;
-    --paper:#FAF7F2;
-    --card:#FFFFFF;
-    --line:#E7E1D8;
-    --amber:#D9A441;
-    --amber-dark:#B9852B;
-    --sage:#6F9C8B;
-    --rust:#C1553C;
-    --text:#241C33;
-    --text-dim:#6B637C;
-  }
-  *{box-sizing:border-box;}
-  body{margin:0;font-family:'Inter',sans-serif;background:var(--paper);color:var(--text);}
-  h1,h2,h3,.brand{font-family:'Fraunces',serif;}
-  button{font-family:'Inter',sans-serif;cursor:pointer;}
-  input,select,textarea{font-family:'Inter',sans-serif;}
+/* MyProjects Dashboard — shared styles */
+:root{
+  --ink:#211934;
+  --ink-soft:#342A4E;
+  --paper:#FAF7F2;
+  --card:#FFFFFF;
+  --line:#E7E1D8;
+  --amber:#D9A441;
+  --amber-dark:#B9852B;
+  --sage:#6F9C8B;
+  --rust:#C1553C;
+  --text:#241C33;
+  --text-dim:#6B637C;
+}
+*{box-sizing:border-box;}
+body{margin:0;font-family:'Inter',sans-serif;background:var(--paper);color:var(--text);}
+h1,h2,h3,.brand{font-family:'Fraunces',serif;}
+button{font-family:'Inter',sans-serif;cursor:pointer;}
+input,select,textarea{font-family:'Inter',sans-serif;}
 
-  /* ---------- Login ---------- */
-  #login-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;background:
-    radial-gradient(circle at 20% 20%, #2E2350 0%, var(--ink) 55%);}
-  .login-card{background:var(--card);width:360px;max-width:90vw;padding:40px 34px;border-radius:14px;
-    box-shadow:0 30px 60px rgba(0,0,0,.35);}
-  .login-card .brand{font-size:26px;font-weight:600;color:var(--ink);margin:0;}
-  .login-card .tag{color:var(--text-dim);font-size:13px;margin:4px 0 28px;letter-spacing:.02em;}
-  .field{margin-bottom:16px;}
-  .field label{display:block;font-size:12px;color:var(--text-dim);margin-bottom:6px;}
-  .field input{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:8px;font-size:14px;
-    background:#fff;color:var(--text);}
-  .field input:focus{outline:2px solid var(--amber);outline-offset:1px;}
-  .btn-primary{width:100%;padding:12px;border:none;border-radius:8px;background:var(--ink);color:#fff;
-    font-size:14px;font-weight:600;margin-top:6px;}
-  .btn-primary:hover{background:var(--ink-soft);}
-  .login-error{color:var(--rust);font-size:13px;margin-top:12px;min-height:16px;}
+/* ---------- Login (two-panel) ---------- */
+#login-screen{min-height:100vh;display:flex;}
+.login-hero{flex:1.1;display:flex;flex-direction:column;justify-content:space-between;padding:56px 60px;
+  color:#fff;background:radial-gradient(circle at 15% 12%, #4A3A78 0%, #2E2350 35%, var(--ink) 75%);
+  position:relative;overflow:hidden;}
+.login-hero::after{content:'';position:absolute;right:-120px;bottom:-120px;width:340px;height:340px;
+  border-radius:50%;background:radial-gradient(circle, rgba(217,164,65,.28) 0%, transparent 70%);}
+.login-hero-top{display:flex;align-items:center;gap:12px;position:relative;z-index:1;}
+.login-badge{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,var(--amber),var(--rust));
+  display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.login-hero .brand{font-size:19px;color:#fff;margin:0;}
+.login-eyebrow{font-size:11px;letter-spacing:.14em;color:#C9BEE8;margin:34px 0 14px;position:relative;z-index:1;}
+.login-hero h1{font-size:44px;line-height:1.12;color:#fff;margin:0 0 18px;font-weight:600;position:relative;z-index:1;
+  max-width:420px;}
+.login-hero p.lede{color:#CDC3E6;font-size:14.5px;line-height:1.6;max-width:380px;margin:0 0 30px;position:relative;z-index:1;}
+.login-pills{display:flex;gap:10px;flex-wrap:wrap;position:relative;z-index:1;}
+.login-pill{padding:9px 15px;border-radius:20px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);
+  color:#EDE7F6;font-size:12.5px;}
+.login-hero-foot{font-size:11.5px;color:#9C90BC;position:relative;z-index:1;}
 
-  /* ---------- App shell ---------- */
-  #app-screen{display:none;min-height:100vh;}
-  .app-layout{display:flex;min-height:100vh;}
+.login-panel{flex:1;min-width:380px;max-width:520px;display:flex;align-items:center;justify-content:center;
+  background:var(--card);padding:40px;}
+.login-form{width:100%;max-width:320px;}
+.login-eyebrow-dark{font-size:11px;letter-spacing:.14em;color:var(--amber-dark);font-weight:700;margin:0 0 10px;}
+.login-form h2{font-size:30px;margin:0 0 8px;color:var(--ink);}
+.login-form .sub{color:var(--text-dim);font-size:13.5px;margin:0 0 30px;line-height:1.5;}
+.field{margin-bottom:16px;}
+.field label{display:block;font-size:12px;color:var(--text-dim);margin-bottom:6px;}
+.field input{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:9px;font-size:14px;
+  background:#fff;color:var(--text);}
+.field input:focus{outline:2px solid var(--amber);outline-offset:1px;}
+.pw-wrap{position:relative;}
+.pw-wrap input{padding-right:56px;}
+.pw-toggle{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;
+  font-size:11.5px;font-weight:600;color:var(--text-dim);padding:6px 8px;}
+.pw-toggle:hover{color:var(--ink);}
+.btn-primary{width:100%;padding:13px;border:none;border-radius:9px;
+  background:linear-gradient(135deg,var(--ink),var(--ink-soft));color:#fff;
+  font-size:14.5px;font-weight:600;margin-top:8px;}
+.btn-primary:hover{background:linear-gradient(135deg,var(--ink-soft),var(--ink));}
+.login-error{color:var(--rust);font-size:13px;margin-top:12px;min-height:16px;}
 
-  .sidebar{width:230px;flex-shrink:0;background:var(--ink);color:#EDE7F6;padding:26px 16px;
-    display:flex;flex-direction:column;position:sticky;top:0;height:100vh;}
-  .sidebar .brand{font-size:20px;color:#fff;margin:0 6px 2px;}
-  .sidebar .tag{font-size:11px;color:#B7ADCF;margin:0 6px 26px;letter-spacing:.03em;}
-  .nav-btn{display:flex;align-items:center;gap:10px;width:100%;padding:11px 12px;background:none;
-    border:none;border-radius:8px;color:#D8D0EC;text-align:left;font-size:14px;margin-bottom:3px;}
-  .nav-btn:hover{background:rgba(255,255,255,.06);}
-  .nav-btn.active{background:var(--amber);color:var(--ink);font-weight:600;}
-  .sidebar-spacer{flex:1;}
-  .who{font-size:12px;color:#B7ADCF;padding:0 12px 10px;}
-  .who strong{color:#fff;display:block;font-size:14px;margin-bottom:2px;}
-  .logout-btn{width:100%;padding:10px 12px;background:rgba(255,255,255,.08);border:none;border-radius:8px;
-    color:#EDE7F6;font-size:13px;}
-  .logout-btn:hover{background:rgba(255,255,255,.15);}
+@media(max-width:860px){
+  #login-screen{flex-direction:column;}
+  .login-hero{padding:36px 28px;}
+  .login-hero h1{font-size:32px;}
+  .login-panel{padding:36px 24px;}
+}
 
-  .main{flex:1;min-width:0;}
-  .topbar{display:flex;align-items:center;justify-content:space-between;padding:20px 32px;
-    border-bottom:1px solid var(--line);background:var(--paper);position:sticky;top:0;z-index:5;}
-  .topbar h1{font-size:22px;margin:0;color:var(--ink);}
-  .topbar-actions{display:flex;gap:10px;}
-  .btn{padding:9px 16px;border-radius:8px;border:1px solid var(--line);background:#fff;color:var(--text);
-    font-size:13px;font-weight:600;}
-  .btn:hover{border-color:var(--ink);}
-  .btn-amber{background:var(--amber);border-color:var(--amber);color:var(--ink);}
-  .btn-amber:hover{background:var(--amber-dark);border-color:var(--amber-dark);}
+/* ---------- Rich text editor ---------- */
+.rte-toolbar{display:flex;align-items:center;gap:3px;flex-wrap:wrap;background:#F3EFE6;
+  border:1px solid var(--line);border-bottom:none;border-radius:10px 10px 0 0;padding:6px 8px;}
+.rte-btn{width:30px;height:30px;border-radius:6px;border:1px solid transparent;background:none;
+  color:var(--text);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.rte-btn:hover{background:#fff;border-color:var(--line);}
+.rte-btn[data-cmd="strikeThrough"]{text-decoration:line-through;}
+.rte-btn[data-cmd="underline"]{text-decoration:underline;}
+.rte-sep{width:1px;height:20px;background:var(--line);margin:0 4px;}
+.rte-color{width:28px;height:28px;border:1px solid var(--line);border-radius:6px;padding:2px;background:#fff;
+  cursor:pointer;}
+.rte-select{border:1px solid var(--line);border-radius:6px;padding:5px 6px;font-size:12.5px;background:#fff;
+  color:var(--text);}
+.rte-editable{width:100%;min-height:120px;padding:16px 20px;border:1px solid var(--line);border-radius:0 0 10px 10px;
+  font-size:14.5px;line-height:1.7;background:#fff;overflow-y:auto;}
+.rte-editable:focus{outline:none;border-color:var(--amber);}
+.rte-editable[data-empty="true"]:before{content:attr(data-placeholder);color:var(--text-dim);}
+#chap-content.rte-editable{min-height:400px;font-family:'Fraunces',Georgia,serif;font-size:17px;line-height:1.75;}
+.rte-editable b,.rte-editable strong{font-weight:700;}
+.rte-editable ul,.rte-editable ol{padding-left:22px;margin:10px 0;}
 
-  .content{padding:28px 32px 60px;}
-  .section{display:none;}
-  .section.active{display:block;}
+/* ---------- App shell ---------- */
+#app-screen{display:none;min-height:100vh;}
+.app-layout{display:flex;min-height:100vh;}
 
-  /* filter tabs */
-  .tabs{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap;}
-  .tab{padding:7px 14px;border-radius:20px;border:1px solid var(--line);background:#fff;font-size:12.5px;
-    color:var(--text-dim);}
-  .tab.active{background:var(--ink);border-color:var(--ink);color:#fff;}
+.sidebar{width:230px;flex-shrink:0;background:var(--ink);color:#EDE7F6;padding:26px 16px;
+  display:flex;flex-direction:column;position:sticky;top:0;height:100vh;}
+.sidebar .brand{font-size:20px;color:#fff;margin:0 6px 2px;}
+.sidebar .tag{font-size:11px;color:#B7ADCF;margin:0 6px 26px;letter-spacing:.03em;}
+.nav-btn{display:flex;align-items:center;gap:10px;width:100%;padding:11px 12px;background:none;
+  border:none;border-radius:8px;color:#D8D0EC;text-align:left;font-size:14px;margin-bottom:3px;}
+.nav-btn:hover{background:rgba(255,255,255,.06);}
+.nav-btn.active{background:var(--amber);color:var(--ink);font-weight:600;}
+.sidebar-spacer{flex:1;}
+.who{font-size:12px;color:#B7ADCF;padding:0 12px 10px;}
+.who strong{color:#fff;display:block;font-size:14px;margin-bottom:2px;}
+.logout-btn{width:100%;padding:10px 12px;background:rgba(255,255,255,.08);border:none;border-radius:8px;
+  color:#EDE7F6;font-size:13px;}
+.logout-btn:hover{background:rgba(255,255,255,.15);}
 
-  .project-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:18px;}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 18px 16px;}
-  .card .cat{display:inline-block;font-size:11px;padding:3px 9px;border-radius:20px;background:#F1ECE0;
-    color:var(--text-dim);margin-bottom:10px;}
-  .card h3{margin:0 0 4px;font-size:17px;color:var(--ink);}
-  .card .meta{font-size:12.5px;color:var(--text-dim);margin-bottom:12px;}
-  .progress-track{height:7px;border-radius:5px;background:#EFE9DD;overflow:hidden;margin-bottom:6px;}
-  .progress-fill{height:100%;background:var(--sage);border-radius:5px;}
-  .progress-label{font-size:12px;color:var(--text-dim);display:flex;justify-content:space-between;}
-  .status-pill{font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;margin-top:10px;
-    display:inline-block;}
-  .status-Planning{background:#F1ECE0;color:#8A7C55;}
-  .status-Active{background:#E6F0EC;color:var(--sage);}
-  .status-Paused{background:#F5E6E1;color:var(--rust);}
-  .status-Done{background:#E5E9F5;color:#4A5FA6;}
-  .card-actions{margin-top:12px;display:flex;gap:8px;}
-  .card-actions input[type=range]{flex:1;}
+.main{flex:1;min-width:0;}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:20px 32px;
+  border-bottom:1px solid var(--line);background:var(--paper);position:sticky;top:0;z-index:5;}
+.topbar h1{font-size:22px;margin:0;color:var(--ink);}
+.topbar-actions{display:flex;gap:10px;}
+.btn{padding:9px 16px;border-radius:8px;border:1px solid var(--line);background:#fff;color:var(--text);
+  font-size:13px;font-weight:600;}
+.btn:hover{border-color:var(--ink);}
+.btn-amber{background:var(--amber);border-color:var(--amber);color:var(--ink);}
+.btn-amber:hover{background:var(--amber-dark);border-color:var(--amber-dark);}
 
-  /* forms */
-  .form-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:26px;
-    max-width:520px;}
-  .field textarea{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:8px;
-    font-size:14px;resize:vertical;}
-  .field select{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:8px;font-size:14px;
-    background:#fff;}
+.content{padding:28px 32px 60px;}
+.section{display:none;}
+.section.active{display:block;}
 
-  /* books */
-  .book-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-bottom:24px;}
-  .book-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;cursor:pointer;}
-  .book-card:hover{border-color:var(--amber);}
-  .book-card h3{margin:0 0 4px;font-size:16px;}
-  .book-card .meta{font-size:12px;color:var(--text-dim);}
-  .editor-shell{display:none;}
-  .editor-shell.active{display:block;}
-  .chapter-list{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0;}
-  .chapter-pill{padding:6px 12px;border-radius:8px;border:1px solid var(--line);background:#fff;font-size:12.5px;}
-  .chapter-pill.active{background:var(--ink);color:#fff;border-color:var(--ink);}
-  .book-editor{width:100%;height:420px;padding:20px;border:1px solid var(--line);border-radius:10px;
-    font-family:'Fraunces',Georgia,serif;font-size:17px;line-height:1.7;resize:vertical;}
-  .editor-meta{display:flex;justify-content:space-between;align-items:center;margin-top:10px;
-    font-size:12.5px;color:var(--text-dim);}
+/* filter tabs */
+.tabs{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap;}
+.tab{padding:7px 14px;border-radius:20px;border:1px solid var(--line);background:#fff;font-size:12.5px;
+  color:var(--text-dim);}
+.tab.active{background:var(--ink);border-color:var(--ink);color:#fff;}
 
-  /* ideas */
-  .idea-item{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--amber);
-    border-radius:8px;padding:12px 16px;margin-bottom:10px;}
-  .idea-item .meta{font-size:11.5px;color:var(--text-dim);margin-top:4px;}
+.project-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:18px;}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 18px 16px;}
+.card .cat{display:inline-block;font-size:11px;padding:3px 9px;border-radius:20px;background:#F1ECE0;
+  color:var(--text-dim);margin-bottom:10px;}
+.card h3{margin:0 0 4px;font-size:17px;color:var(--ink);}
+.card .meta{font-size:12.5px;color:var(--text-dim);margin-bottom:12px;}
+.progress-track{height:7px;border-radius:5px;background:#EFE9DD;overflow:hidden;margin-bottom:6px;}
+.progress-fill{height:100%;background:var(--sage);border-radius:5px;}
+.progress-label{font-size:12px;color:var(--text-dim);display:flex;justify-content:space-between;}
+.status-pill{font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;margin-top:10px;
+  display:inline-block;}
+.status-Planning{background:#F1ECE0;color:#8A7C55;}
+.status-Active{background:#E6F0EC;color:var(--sage);}
+.status-Paused{background:#F5E6E1;color:var(--rust);}
+.status-Done{background:#E5E9F5;color:#4A5FA6;}
+.card-actions{margin-top:12px;display:flex;gap:8px;}
+.card-actions input[type=range]{flex:1;}
 
-  /* sticky panel */
-  #sticky-toggle{position:fixed;right:24px;bottom:24px;width:54px;height:54px;border-radius:50%;
-    background:var(--amber);border:none;box-shadow:0 8px 20px rgba(0,0,0,.25);font-size:22px;z-index:20;}
-  #sticky-panel{position:fixed;top:0;right:-360px;width:340px;height:100vh;background:var(--card);
-    box-shadow:-8px 0 30px rgba(0,0,0,.15);transition:right .25s ease;padding:24px 20px;overflow-y:auto;
-    z-index:25;}
-  #sticky-panel.open{right:0;}
-  #sticky-panel h2{font-size:18px;margin:0 0 4px;}
-  #sticky-panel .sub{font-size:12px;color:var(--text-dim);margin-bottom:18px;}
-  .sticky-note{background:#FFF8E6;border:1px solid #F0DFA8;border-radius:8px;padding:12px 14px;margin-bottom:10px;}
-  .sticky-note .txt{font-size:13.5px;color:var(--text);margin-bottom:6px;}
-  .sticky-note .meta{font-size:11px;color:var(--text-dim);display:flex;justify-content:space-between;}
-  .sticky-note .actions{margin-top:8px;display:flex;gap:6px;}
-  .mini-btn{font-size:11px;padding:4px 9px;border-radius:6px;border:1px solid var(--line);background:#fff;}
-  .mini-btn:hover{border-color:var(--ink);}
-  .close-panel{position:absolute;top:18px;right:18px;background:none;border:none;font-size:18px;
-    color:var(--text-dim);}
-  .add-sticky-form{margin-top:10px;}
-  .add-sticky-form input,.add-sticky-form textarea{width:100%;margin-bottom:8px;padding:9px 10px;
-    border:1px solid var(--line);border-radius:7px;font-size:13px;}
-  .empty{color:var(--text-dim);font-size:13px;padding:20px 0;text-align:center;}
+/* forms */
+.form-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:26px;
+  max-width:520px;}
+.field textarea{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:8px;
+  font-size:14px;resize:vertical;}
+.field select{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:8px;font-size:14px;
+  background:#fff;}
 
-  @media(max-width:760px){
-    .sidebar{position:fixed;left:-230px;transition:left .2s;z-index:30;}
-    .sidebar.open{left:0;}
-    .content{padding:20px;}
-    .topbar{padding:16px 20px;}
-  }
+/* books */
+.book-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-bottom:24px;}
+.book-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;cursor:pointer;}
+.book-card:hover{border-color:var(--amber);}
+.book-card h3{margin:0 0 4px;font-size:16px;}
+.book-card .meta{font-size:12px;color:var(--text-dim);}
+.editor-shell{display:none;}
+.editor-shell.active{display:block;}
+.chapter-list{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0;}
+.chapter-pill{padding:6px 12px;border-radius:8px;border:1px solid var(--line);background:#fff;font-size:12.5px;}
+.chapter-pill.active{background:var(--ink);color:#fff;border-color:var(--ink);}
+.book-editor{width:100%;height:420px;padding:20px;border:1px solid var(--line);border-radius:10px;
+  font-family:'Fraunces',Georgia,serif;font-size:17px;line-height:1.7;resize:vertical;}
+.editor-meta{display:flex;justify-content:space-between;align-items:center;margin-top:10px;
+  font-size:12.5px;color:var(--text-dim);}
+
+/* ideas */
+.idea-item{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--amber);
+  border-radius:8px;padding:12px 16px;margin-bottom:10px;}
+.idea-item .meta{font-size:11.5px;color:var(--text-dim);margin-top:4px;}
+
+/* sticky panel */
+#sticky-toggle{position:fixed;right:24px;bottom:24px;width:54px;height:54px;border-radius:50%;
+  background:var(--amber);border:none;box-shadow:0 8px 20px rgba(0,0,0,.25);font-size:22px;z-index:20;}
+#sticky-panel{position:fixed;top:0;right:-360px;width:340px;height:100vh;background:var(--card);
+  box-shadow:-8px 0 30px rgba(0,0,0,.15);transition:right .25s ease;padding:24px 20px;overflow-y:auto;
+  z-index:25;}
+#sticky-panel.open{right:0;}
+#sticky-panel h2{font-size:18px;margin:0 0 4px;}
+#sticky-panel .sub{font-size:12px;color:var(--text-dim);margin-bottom:18px;}
+.sticky-note{background:#FFF8E6;border:1px solid #F0DFA8;border-radius:8px;padding:12px 14px;margin-bottom:10px;}
+.sticky-note .txt{font-size:13.5px;color:var(--text);margin-bottom:6px;}
+.sticky-note .meta{font-size:11px;color:var(--text-dim);display:flex;justify-content:space-between;}
+.sticky-note .actions{margin-top:8px;display:flex;gap:6px;}
+.mini-btn{font-size:11px;padding:4px 9px;border-radius:6px;border:1px solid var(--line);background:#fff;}
+.mini-btn:hover{border-color:var(--ink);}
+.close-panel{position:absolute;top:18px;right:18px;background:none;border:none;font-size:18px;
+  color:var(--text-dim);}
+.add-sticky-form{margin-top:10px;}
+.add-sticky-form input,.add-sticky-form textarea{width:100%;margin-bottom:8px;padding:9px 10px;
+  border:1px solid var(--line);border-radius:7px;font-size:13px;}
+.empty{color:var(--text-dim);font-size:13px;padding:20px 0;text-align:center;}
+
+@media(max-width:760px){
+  .sidebar{position:fixed;left:-230px;transition:left .2s;z-index:30;}
+  .sidebar.open{left:0;}
+  .content{padding:20px;}
+  .topbar{padding:16px 20px;}
+}
+
 </style>
 </head>
 <body>
 
 <!-- ================= LOGIN ================= -->
 <div id="login-screen">
-  <div class="login-card">
-    <p class="brand">MyProjects</p>
-    <p class="tag">Studio dashboard · websites · apps · books · content</p>
-    <div class="field">
-      <label>Username</label>
-      <input type="text" id="login-user" autocomplete="username">
+  <div class="login-hero">
+    <div class="login-hero-top">
+      <div class="login-badge">✳</div>
+      <p class="brand">MyProjects</p>
     </div>
-    <div class="field">
-      <label>Password</label>
-      <input type="password" id="login-pass" autocomplete="current-password">
+    <div>
+      <p class="login-eyebrow">PLAN · BUILD · SHIP</p>
+      <h1>Your studio, in one dashboard.</h1>
+      <p class="lede">Track every website, app, book and content project in one place, with shared reminders for everyone on the team.</p>
+      <div class="login-pills">
+        <span class="login-pill">📊 Dashboard</span>
+        <span class="login-pill">📖 Book Writing</span>
+        <span class="login-pill">💡 Ideas</span>
+        <span class="login-pill">📌 Reminders</span>
+      </div>
     </div>
-    <button class="btn-primary" onclick="login()">Sign in</button>
-    <div class="login-error" id="login-error"></div>
+    <p class="login-hero-foot">Secure access to every project permitted for your account.</p>
+  </div>
+
+  <div class="login-panel">
+    <div class="login-form">
+      <p class="login-eyebrow-dark">SECURE ACCESS</p>
+      <h2>Welcome</h2>
+      <p class="sub">Enter the username and password assigned to your account.</p>
+      <div class="field">
+        <label>Username</label>
+        <input type="text" id="login-user" autocomplete="username">
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <div class="pw-wrap">
+          <input type="password" id="login-pass" autocomplete="current-password">
+          <button type="button" class="pw-toggle" onclick="togglePasswordVisibility()">Show</button>
+        </div>
+      </div>
+      <button class="btn-primary" onclick="login()">Sign in</button>
+      <div class="login-error" id="login-error"></div>
+    </div>
   </div>
 </div>
 
@@ -250,7 +330,24 @@
             </div>
             <div class="field">
               <label>Notes</label>
-              <textarea id="proj-desc" rows="3" placeholder="What's the goal here?"></textarea>
+              <div class="rte-toolbar">
+                <button type="button" class="rte-btn" data-cmd="bold" data-target="proj-desc">B</button>
+                <button type="button" class="rte-btn" data-cmd="italic" data-target="proj-desc"><i>I</i></button>
+                <button type="button" class="rte-btn" data-cmd="underline" data-target="proj-desc">U</button>
+                <button type="button" class="rte-btn" data-cmd="strikeThrough" data-target="proj-desc">S</button>
+                <div class="rte-sep"></div>
+                <input type="color" class="rte-color" data-target="proj-desc" value="#C1553C" title="Text colour">
+                <select class="rte-select" data-cmd="formatBlock" data-target="proj-desc">
+                  <option value="p">Normal</option>
+                  <option value="h3">Heading</option>
+                </select>
+                <button type="button" class="rte-btn" data-cmd="removeFormat" data-target="proj-desc">✕</button>
+                <div class="rte-sep"></div>
+                <button type="button" class="rte-btn" data-cmd="insertUnorderedList" data-target="proj-desc">•≡</button>
+                <button type="button" class="rte-btn" data-cmd="insertOrderedList" data-target="proj-desc">1≡</button>
+              </div>
+              <div id="proj-desc" class="rte-editable" contenteditable="true"
+                data-placeholder="What's the goal here?" data-empty="true"></div>
             </div>
             <button class="btn btn-amber" onclick="submitProject()">Save project</button>
           </div>
@@ -282,7 +379,24 @@
               <label>Chapter title</label>
               <input type="text" id="chap-title" placeholder="Chapter title">
             </div>
-            <textarea id="chap-content" class="book-editor" placeholder="Start writing…"></textarea>
+            <div class="rte-toolbar">
+              <button type="button" class="rte-btn" data-cmd="bold" data-target="chap-content">B</button>
+              <button type="button" class="rte-btn" data-cmd="italic" data-target="chap-content"><i>I</i></button>
+              <button type="button" class="rte-btn" data-cmd="underline" data-target="chap-content">U</button>
+              <button type="button" class="rte-btn" data-cmd="strikeThrough" data-target="chap-content">S</button>
+              <div class="rte-sep"></div>
+              <input type="color" class="rte-color" data-target="chap-content" value="#C1553C" title="Text colour">
+              <select class="rte-select" data-cmd="formatBlock" data-target="chap-content">
+                <option value="p">Normal</option>
+                <option value="h2">Heading</option>
+              </select>
+              <button type="button" class="rte-btn" data-cmd="removeFormat" data-target="chap-content">✕</button>
+              <div class="rte-sep"></div>
+              <button type="button" class="rte-btn" data-cmd="insertUnorderedList" data-target="chap-content">•≡</button>
+              <button type="button" class="rte-btn" data-cmd="insertOrderedList" data-target="chap-content">1≡</button>
+            </div>
+            <div id="chap-content" class="rte-editable" contenteditable="true"
+              data-placeholder="Start writing…" data-empty="true"></div>
             <div class="editor-meta">
               <span id="word-count">0 words</span>
               <button class="btn btn-amber" onclick="saveChapter()">Save draft to cloud</button>
@@ -336,13 +450,27 @@
 </div>
 
 <script>
+/* api.js — deployment URL, shared state, and the one fetch wrapper every
+   feature file calls through. Change SCRIPT_URL here if you ever redeploy
+   the Apps Script backend and get a new URL. */
+
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzUJVYozVwDFhHlyn8bEoUAZeCMpJWlglc2NGwmLNbme1cDnxk-Gas9YnD5ml0YlCGvwg/exec';
 
 let TOKEN = localStorage.getItem('mp_token') || null;
 let DISPLAY_NAME = localStorage.getItem('mp_name') || null;
-let STATE = { projects: [], stickies: [], ideas: [], books: [], chapters: [], activeCat: 'All', currentBook: null, currentChapterId: null };
 
-/* ---------- api ---------- */
+const STATE = {
+  projects: [],
+  stickies: [],
+  ideas: [],
+  books: [],
+  chapters: [],
+  activeCat: 'All',
+  currentBook: null,
+  currentChapterId: null
+};
+
+/** POST helper used by every feature file. Adds the session token automatically. */
 function api(payload) {
   return fetch(SCRIPT_URL, {
     method: 'POST',
@@ -351,67 +479,71 @@ function api(payload) {
   }).then(r => r.json());
 }
 
-/* ---------- auth ---------- */
-function login() {
-  const username = document.getElementById('login-user').value.trim();
-  const password = document.getElementById('login-pass').value;
-  const errEl = document.getElementById('login-error');
-  errEl.textContent = '';
-  if (!username || !password) { errEl.textContent = 'Enter a username and password.'; return; }
 
-  fetch(SCRIPT_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-    body: JSON.stringify({ action: 'login', username: username, password: password })
-  }).then(r => r.json()).then(data => {
-    if (!data.success) { errEl.textContent = data.error || 'Login failed.'; return; }
-    TOKEN = data.token; DISPLAY_NAME = data.displayName;
-    localStorage.setItem('mp_token', TOKEN);
-    localStorage.setItem('mp_name', DISPLAY_NAME);
-    enterApp();
-  }).catch(() => { errEl.textContent = 'Could not reach the server. Try again.'; });
+/* utils.js — small formatting helpers shared across feature files */
+
+function esc(s) {
+  return (s === undefined || s === null) ? '' :
+    String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 }
 
-function logout() {
-  localStorage.removeItem('mp_token');
-  localStorage.removeItem('mp_name');
-  TOKEN = null;
-  document.getElementById('app-screen').style.display = 'none';
-  document.getElementById('login-screen').style.display = 'flex';
+function escAttr(s) { return esc(s).replace(/'/g, "\\'"); }
+
+function fmtDate(d) {
+  const dt = new Date(d);
+  return isNaN(dt) ? d : dt.toLocaleDateString('en-IN', { day: 'numeric', month: 'short' });
 }
 
-function enterApp() {
-  document.getElementById('login-screen').style.display = 'none';
-  document.getElementById('app-screen').style.display = 'block';
-  document.getElementById('who-name').textContent = DISPLAY_NAME;
-  loadDashboard();
+/* ---------- rich text editor (shared by proj-desc and chap-content) ---------- */
+
+function setEditableContent(id, html) {
+  const el = document.getElementById(id);
+  el.innerHTML = html || '';
+  markEmptyState(el);
 }
 
-/* ---------- nav ---------- */
-function showSection(id) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  document.querySelectorAll('.nav-btn').forEach(b => b.classList.toggle('active', b.dataset.section === id));
-  const titles = { dashboard: 'Active Projects', 'new-project': 'New Project', 'book-writing': 'Book Writing', ideas: 'Ideas & Brainstorm' };
-  document.getElementById('topbar-title').textContent = titles[id] || '';
+function markEmptyState(el) {
+  const empty = !el.innerText.trim();
+  el.setAttribute('data-empty', empty ? 'true' : 'false');
 }
 
-/* ---------- dashboard load ---------- */
-function loadDashboard() {
-  api({ action: 'getDashboard' }).then(data => {
-    if (!data.success) { if (data.error && data.error.indexOf('expired') > -1) logout(); return; }
-    STATE.projects = data.projects || [];
-    STATE.stickies = data.stickies || [];
-    STATE.ideas = data.ideas || [];
-    STATE.books = data.books || [];
-    renderProjects();
-    renderStickies();
-    renderIdeas();
-    renderBooks();
-  });
+document.addEventListener('click', e => {
+  const btn = e.target.closest('.rte-btn');
+  if (!btn) return;
+  const target = document.getElementById(btn.dataset.target);
+  target.focus();
+  document.execCommand(btn.dataset.cmd, false, null);
+  markEmptyState(target);
+});
+
+document.addEventListener('change', e => {
+  if (e.target.classList && e.target.classList.contains('rte-color')) {
+    const target = document.getElementById(e.target.dataset.target);
+    target.focus();
+    document.execCommand('foreColor', false, e.target.value);
+  }
+  if (e.target.classList && e.target.classList.contains('rte-select')) {
+    const target = document.getElementById(e.target.dataset.target);
+    target.focus();
+    document.execCommand(e.target.dataset.cmd, false, e.target.value);
+    e.target.selectedIndex = 0;
+  }
+});
+
+/* ---------- login password show/hide ---------- */
+
+function togglePasswordVisibility() {
+  const input = document.getElementById('login-pass');
+  const btn = document.querySelector('.pw-toggle');
+  const showing = input.type === 'text';
+  input.type = showing ? 'password' : 'text';
+  btn.textContent = showing ? 'Show' : 'Hide';
 }
 
-/* ---------- projects ---------- */
+
+/* projects.js — the project dashboard: cards, category filter tabs,
+   progress slider, and the "New Project" form. */
+
 function filterCategory(cat) {
   STATE.activeCat = cat;
   document.querySelectorAll('#category-tabs .tab').forEach(t => t.classList.toggle('active', t.dataset.cat === cat));
@@ -422,6 +554,7 @@ function renderProjects() {
   const grid = document.getElementById('project-list');
   const list = STATE.activeCat === 'All' ? STATE.projects : STATE.projects.filter(p => p.Category === STATE.activeCat);
   if (!list.length) { grid.innerHTML = '<p class="empty">No projects yet in this category — start one!</p>'; return; }
+
   const catLabel = { Website: '🌐 Website', AppDev: '📱 App Dev', Book: '✍️ Book', YouTube: '▶ YouTube', Social: '📣 Social', Other: '🗂 Other' };
   grid.innerHTML = list.map(p => `
     <div class="card">
@@ -439,8 +572,12 @@ function renderProjects() {
 }
 
 function bumpProgress(projectId, value) {
-  api({ action: 'updateProject', projectId: projectId, progress: Number(value), status: Number(value) >= 100 ? 'Done' : undefined })
-    .then(() => loadDashboard());
+  api({
+    action: 'updateProject',
+    projectId: projectId,
+    progress: Number(value),
+    status: Number(value) >= 100 ? 'Done' : undefined
+  }).then(() => loadDashboard());
 }
 
 function submitProject() {
@@ -452,18 +589,133 @@ function submitProject() {
     category: document.getElementById('proj-cat').value,
     partner: document.getElementById('proj-partner').value,
     targetDate: document.getElementById('proj-target').value,
-    description: document.getElementById('proj-desc').value
+    description: document.getElementById('proj-desc').innerHTML
   }).then(() => {
     document.getElementById('proj-name').value = '';
     document.getElementById('proj-partner').value = '';
-    document.getElementById('proj-desc').value = '';
+    setEditableContent('proj-desc', '');
     showSection('dashboard');
     loadDashboard();
   });
 }
 
-/* ---------- sticky notes ---------- */
-function toggleStickyPanel() { document.getElementById('sticky-panel').classList.toggle('open'); }
+
+/* books.js — the Book Writing module: book library, chapter list,
+   and the drafting editor with live word count. */
+
+function toggleNewBookForm() {
+  const f = document.getElementById('new-book-form');
+  f.style.display = f.style.display === 'none' ? 'block' : 'none';
+}
+
+function renderBooks() {
+  const el = document.getElementById('book-list');
+  el.innerHTML = STATE.books.length ? STATE.books.map(b => `
+    <div class="book-card" onclick="openBook('${b.BookID}','${escAttr(b.Title)}')">
+      <h3>${esc(b.Title)}</h3>
+      <div class="meta">${esc(b.Genre || '')}${b.Genre ? ' · ' : ''}${esc(b.Authors || '')}</div>
+      <div class="meta">${esc(b.Status || 'Drafting')}</div>
+    </div>`).join('') : '<p class="empty">No books yet — start one above.</p>';
+}
+
+function addBook() {
+  const title = document.getElementById('book-title').value.trim();
+  if (!title) { alert('Give the book a title first.'); return; }
+  api({
+    action: 'addBook',
+    title: title,
+    genre: document.getElementById('book-genre').value,
+    authors: document.getElementById('book-authors').value,
+    synopsis: document.getElementById('book-synopsis').value
+  }).then(() => {
+    document.getElementById('book-title').value = '';
+    document.getElementById('book-genre').value = '';
+    document.getElementById('book-authors').value = '';
+    document.getElementById('book-synopsis').value = '';
+    toggleNewBookForm();
+    loadDashboard();
+  });
+}
+
+function openBook(bookId, title) {
+  STATE.currentBook = bookId;
+  document.getElementById('book-library').style.display = 'none';
+  document.getElementById('editor-shell').classList.add('active');
+  document.getElementById('editor-book-title').textContent = title;
+  api({ action: 'getBookDetail', bookId: bookId }).then(data => {
+    STATE.chapters = data.chapters || [];
+    renderChapterList();
+    if (STATE.chapters.length) loadChapterIntoEditor(STATE.chapters[0]);
+    else newChapter();
+  });
+}
+
+function closeEditor() {
+  document.getElementById('book-library').style.display = 'block';
+  document.getElementById('editor-shell').classList.remove('active');
+}
+
+function renderChapterList() {
+  const el = document.getElementById('chapter-list');
+  el.innerHTML = STATE.chapters.map(c => `
+    <button class="chapter-pill ${c.ChapterID === STATE.currentChapterId ? 'active' : ''}"
+      onclick='loadChapterIntoEditor(${JSON.stringify(c)})'>${esc(c.Title || 'Untitled')}</button>
+  `).join('');
+}
+
+function loadChapterIntoEditor(c) {
+  STATE.currentChapterId = c.ChapterID;
+  document.getElementById('chap-title').value = c.Title || '';
+  setEditableContent('chap-content', c.Content || '');
+  updateWordCount();
+  renderChapterList();
+}
+
+function newChapter() {
+  STATE.currentChapterId = null;
+  document.getElementById('chap-title').value = '';
+  setEditableContent('chap-content', '');
+  updateWordCount();
+}
+
+function updateWordCount() {
+  const text = document.getElementById('chap-content').innerText.trim();
+  const words = text ? text.split(/\s+/).length : 0;
+  document.getElementById('word-count').textContent = words + ' words';
+}
+
+document.addEventListener('input', e => {
+  if (e.target.id === 'chap-content') updateWordCount();
+  if (e.target.classList && e.target.classList.contains('rte-editable')) markEmptyState(e.target);
+});
+
+function saveChapter() {
+  const title = document.getElementById('chap-title').value.trim();
+  const content = document.getElementById('chap-content').innerHTML;
+  if (!title) { alert('Give the chapter a title first.'); return; }
+  api({
+    action: 'saveChapter',
+    bookId: STATE.currentBook,
+    chapterId: STATE.currentChapterId,
+    chapterNo: STATE.chapters.length + 1,
+    title: title,
+    content: content
+  }).then(data => {
+    STATE.currentChapterId = data.chapterId;
+    api({ action: 'getBookDetail', bookId: STATE.currentBook }).then(d => {
+      STATE.chapters = d.chapters || [];
+      renderChapterList();
+    });
+  });
+}
+
+
+/* stickies.js — the slide-out sticky notes panel: targets/reminders
+   shared across everyone who logs in. */
+
+function toggleStickyPanel() {
+  document.getElementById('sticky-panel').classList.toggle('open');
+}
 
 function renderStickies() {
   const active = STATE.stickies.filter(s => s.Status !== 'done');
@@ -494,10 +746,14 @@ function addSticky() {
   api({ action: 'addSticky', text: text, targetDate: document.getElementById('sticky-date').value })
     .then(() => { document.getElementById('sticky-text').value = ''; loadDashboard(); });
 }
+
 function completeSticky(id) { api({ action: 'completeSticky', noteId: id }).then(loadDashboard); }
+
 function deleteSticky(id) { api({ action: 'deleteSticky', noteId: id }).then(loadDashboard); }
 
-/* ---------- ideas ---------- */
+
+/* ideas.js — the brainstorm log. */
+
 function renderIdeas() {
   const el = document.getElementById('idea-list');
   el.innerHTML = STATE.ideas.length ? STATE.ideas.map(i => `
@@ -506,6 +762,7 @@ function renderIdeas() {
       <div class="meta">${esc(i.Category)} · ${esc(i.CreatedBy)} · ${i.CreatedDate ? fmtDate(i.CreatedDate) : ''}</div>
     </div>`).join('') : '<p class="empty">No ideas logged yet.</p>';
 }
+
 function addIdea() {
   const text = document.getElementById('idea-text').value.trim();
   if (!text) return;
@@ -513,104 +770,81 @@ function addIdea() {
     .then(() => { document.getElementById('idea-text').value = ''; loadDashboard(); });
 }
 
-/* ---------- books ---------- */
-function toggleNewBookForm() {
-  const f = document.getElementById('new-book-form');
-  f.style.display = f.style.display === 'none' ? 'block' : 'none';
+
+/* main.js — sidebar navigation and the one call that refreshes every
+   feature at once from the Sheet. This is the file that ties the other
+   feature files together; it doesn't own any single feature itself. */
+
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.toggle('active', b.dataset.section === id));
+  const titles = { dashboard: 'Active Projects', 'new-project': 'New Project', 'book-writing': 'Book Writing', ideas: 'Ideas & Brainstorm' };
+  document.getElementById('topbar-title').textContent = titles[id] || '';
 }
-function renderBooks() {
-  const el = document.getElementById('book-list');
-  el.innerHTML = STATE.books.length ? STATE.books.map(b => `
-    <div class="book-card" onclick="openBook('${b.BookID}','${escAttr(b.Title)}')">
-      <h3>${esc(b.Title)}</h3>
-      <div class="meta">${esc(b.Genre || '')}${b.Genre ? ' · ' : ''}${esc(b.Authors || '')}</div>
-      <div class="meta">${esc(b.Status || 'Drafting')}</div>
-    </div>`).join('') : '<p class="empty">No books yet — start one above.</p>';
-}
-function addBook() {
-  const title = document.getElementById('book-title').value.trim();
-  if (!title) { alert('Give the book a title first.'); return; }
-  api({
-    action: 'addBook', title: title,
-    genre: document.getElementById('book-genre').value,
-    authors: document.getElementById('book-authors').value,
-    synopsis: document.getElementById('book-synopsis').value
-  }).then(() => {
-    document.getElementById('book-title').value = '';
-    document.getElementById('book-genre').value = '';
-    document.getElementById('book-authors').value = '';
-    document.getElementById('book-synopsis').value = '';
-    toggleNewBookForm();
-    loadDashboard();
+
+function loadDashboard() {
+  api({ action: 'getDashboard' }).then(data => {
+    if (!data.success) { if (data.error && data.error.indexOf('expired') > -1) logout(); return; }
+    STATE.projects = data.projects || [];
+    STATE.stickies = data.stickies || [];
+    STATE.ideas = data.ideas || [];
+    STATE.books = data.books || [];
+    renderProjects();
+    renderStickies();
+    renderIdeas();
+    renderBooks();
   });
 }
 
-function openBook(bookId, title) {
-  STATE.currentBook = bookId;
-  document.getElementById('book-library').style.display = 'none';
-  document.getElementById('editor-shell').classList.add('active');
-  document.getElementById('editor-book-title').textContent = title;
-  api({ action: 'getBookDetail', bookId: bookId }).then(data => {
-    STATE.chapters = data.chapters || [];
-    renderChapterList();
-    if (STATE.chapters.length) loadChapterIntoEditor(STATE.chapters[0]);
-    else newChapter();
-  });
-}
-function closeEditor() {
-  document.getElementById('book-library').style.display = 'block';
-  document.getElementById('editor-shell').classList.remove('active');
-}
-function renderChapterList() {
-  const el = document.getElementById('chapter-list');
-  el.innerHTML = STATE.chapters.map(c => `
-    <button class="chapter-pill ${c.ChapterID === STATE.currentChapterId ? 'active' : ''}"
-      onclick='loadChapterIntoEditor(${JSON.stringify(c)})'>${esc(c.Title || 'Untitled')}</button>
-  `).join('');
-}
-function loadChapterIntoEditor(c) {
-  STATE.currentChapterId = c.ChapterID;
-  document.getElementById('chap-title').value = c.Title || '';
-  document.getElementById('chap-content').value = c.Content || '';
-  updateWordCount();
-  renderChapterList();
-}
-function newChapter() {
-  STATE.currentChapterId = null;
-  document.getElementById('chap-title').value = '';
-  document.getElementById('chap-content').value = '';
-  updateWordCount();
-}
-document.addEventListener('input', e => { if (e.target.id === 'chap-content') updateWordCount(); });
-function updateWordCount() {
-  const text = document.getElementById('chap-content').value.trim();
-  const words = text ? text.split(/\s+/).length : 0;
-  document.getElementById('word-count').textContent = words + ' words';
-}
-function saveChapter() {
-  const title = document.getElementById('chap-title').value.trim();
-  const content = document.getElementById('chap-content').value;
-  if (!title) { alert('Give the chapter a title first.'); return; }
-  api({
-    action: 'saveChapter', bookId: STATE.currentBook, chapterId: STATE.currentChapterId,
-    chapterNo: STATE.chapters.length + 1, title: title, content: content
-  }).then(data => {
-    STATE.currentChapterId = data.chapterId;
-    api({ action: 'getBookDetail', bookId: STATE.currentBook }).then(d => {
-      STATE.chapters = d.chapters || [];
-      renderChapterList();
-    });
-  });
+
+/* auth.js — login, logout, and entering the app after a successful session.
+   Everything to do with WHO is signed in lives here. */
+
+function login() {
+  const username = document.getElementById('login-user').value.trim();
+  const password = document.getElementById('login-pass').value;
+  const errEl = document.getElementById('login-error');
+  errEl.textContent = '';
+  if (!username || !password) { errEl.textContent = 'Enter a username and password.'; return; }
+
+  fetch(SCRIPT_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ action: 'login', username: username, password: password })
+  }).then(r => r.json()).then(data => {
+    if (!data.success) { errEl.textContent = data.error || 'Login failed.'; return; }
+    TOKEN = data.token;
+    DISPLAY_NAME = data.displayName;
+    localStorage.setItem('mp_token', TOKEN);
+    localStorage.setItem('mp_name', DISPLAY_NAME);
+    enterApp();
+  }).catch(() => { errEl.textContent = 'Could not reach the server. Try again.'; });
 }
 
-/* ---------- utils ---------- */
-function esc(s) { return (s === undefined || s === null) ? '' : String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
-function escAttr(s) { return esc(s).replace(/'/g, "\\'"); }
-function fmtDate(d) { const dt = new Date(d); return isNaN(dt) ? d : dt.toLocaleDateString('en-IN', { day: 'numeric', month: 'short' }); }
+function logout() {
+  localStorage.removeItem('mp_token');
+  localStorage.removeItem('mp_name');
+  TOKEN = null;
+  document.getElementById('app-screen').style.display = 'none';
+  document.getElementById('login-screen').style.display = 'flex';
+}
 
-/* ---------- boot ---------- */
-if (TOKEN) enterApp(); 
-document.getElementById('login-pass').addEventListener('keydown', e => { if (e.key === 'Enter') login(); });
+function enterApp() {
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('app-screen').style.display = 'block';
+  document.getElementById('who-name').textContent = DISPLAY_NAME;
+  loadDashboard();
+}
+
+/* Boot: if a session token is already saved, skip straight to the app. */
+if (TOKEN) enterApp();
+
+document.addEventListener('DOMContentLoaded', () => {
+  const passField = document.getElementById('login-pass');
+  if (passField) passField.addEventListener('keydown', e => { if (e.key === 'Enter') login(); });
+});
+
 </script>
 </body>
 </html>
